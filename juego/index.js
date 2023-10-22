@@ -1,10 +1,18 @@
-let INDEX_PREGUNTA = 0;
+let cantidadPreguntas = []
+for (var i = 0; i < baseDePreguntas.length; i++) {
+  cantidadPreguntas.push(i);
+}
 let puntaje = 0;
 
-cargarPregunta(INDEX_PREGUNTA);
+cargarPregunta();
 
-function cargarPregunta(index) {
-  objetoPregunta = baseDePreguntas[index];
+function cargarPregunta() {
+
+  indiceAleatorio = Math.floor(Math.random() * cantidadPreguntas.length);
+  numeroAleatorio = cantidadPreguntas[indiceAleatorio];
+  cantidadPreguntas.splice(indiceAleatorio, 1);
+
+  objetoPregunta = baseDePreguntas[numeroAleatorio];
 
   opciones = [...objetoPregunta.distractores];
   opciones.push(objetoPregunta.respuesta);
@@ -20,16 +28,9 @@ function cargarPregunta(index) {
     document.getElementById("imagen").style.display = "none";
   }
 
-  if (objetoPregunta.ayuda) {
-    document.getElementById("ayuda").style.display = "";
-  } else {
-    document.getElementById("ayuda").style.display = "none";
-  }
-
   document.getElementById("opcion-1").innerHTML = opciones[0];
   document.getElementById("opcion-2").innerHTML = opciones[1];
   document.getElementById("opcion-3").innerHTML = opciones[2];
-  document.getElementById("opcion-4").innerHTML = opciones[3];
 }
 
 async function seleccionarOpción(index) {
@@ -48,14 +49,16 @@ async function seleccionarOpción(index) {
       icon: "error",
     });
   }
-  INDEX_PREGUNTA++;
-  if (INDEX_PREGUNTA >= baseDePreguntas.length) {
+
+  if (cantidadPreguntas.length == 0) {
     await Swal.fire({
       title: "Juego términado",
       text: `Tu puntaje fue de: ${puntaje}/${baseDePreguntas.length}`,
     });
-    INDEX_PREGUNTA = 0;
+    for (var i = 0; i < baseDePreguntas.length; i++) {
+      cantidadPreguntas.push(i);
+    }
     puntaje = 0;
   }
-  cargarPregunta(INDEX_PREGUNTA);
+  cargarPregunta();
 }

@@ -9,8 +9,7 @@ function opnLaTeX(code) {
 let baseDePreguntas = [
   {
     pregunta: "¿Cuál es el símbolo universal de la paz?",
-    imagen:
-      "https://images.unsplash.com/photo-1516589091380-5d8e87df6999?auto=format&fit=crop&q=60&w=500&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHNpbWJvbG9zfGVufDB8fDB8fHww",
+    imagen: "imagenes/paz1.jpg",
     respuesta: "Paloma",
     distractores: ["Espada", "Calavera"],
   },
@@ -71,7 +70,7 @@ let baseDePreguntas = [
   {
     pregunta:
       "¿Cuál es el nombre de la organización fundada por Malala Yousafzai para promover la educación de las niñas?",
-    imagen: "imagenes/paz4.jpg",
+    imagen: "imagenes/paz10.jpg",
     respuesta: "Fundación Malala",
     distractores: ["UNICEF", "Plan Internacional"],
   },
