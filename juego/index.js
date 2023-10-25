@@ -3,6 +3,7 @@ for (var i = 0; i < baseDePreguntas.length; i++) {
   cantidadPreguntas.push(i);
 }
 let puntaje = 0;
+let contador = 0;
 
 cargarPregunta();
 
@@ -13,6 +14,7 @@ function cargarPregunta() {
   cantidadPreguntas.splice(indiceAleatorio, 1);
 
   objetoPregunta = baseDePreguntas[numeroAleatorio];
+  totalPreguntas = baseDePreguntas.length;
 
   opciones = [...objetoPregunta.distractores];
   opciones.push(objetoPregunta.respuesta);
@@ -31,6 +33,9 @@ function cargarPregunta() {
   document.getElementById("opcion-1").innerHTML = opciones[0];
   document.getElementById("opcion-2").innerHTML = opciones[1];
   document.getElementById("opcion-3").innerHTML = opciones[2];
+
+  document.getElementById("totalPreguntas").innerHTML = `Pregunta número: ${contador+1}/${baseDePreguntas.length}`;
+  contador++;
 }
 
 async function seleccionarOpción(index) {
@@ -59,6 +64,7 @@ async function seleccionarOpción(index) {
       cantidadPreguntas.push(i);
     }
     puntaje = 0;
+    contador = 0;
   }
   cargarPregunta();
 }
