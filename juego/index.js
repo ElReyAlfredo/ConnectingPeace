@@ -1,4 +1,4 @@
-let cantidadPreguntas = []
+let cantidadPreguntas = [];
 for (var i = 0; i < baseDePreguntas.length; i++) {
   cantidadPreguntas.push(i);
 }
@@ -8,7 +8,6 @@ let contador = 0;
 cargarPregunta();
 
 function cargarPregunta() {
-
   indiceAleatorio = Math.floor(Math.random() * cantidadPreguntas.length);
   numeroAleatorio = cantidadPreguntas[indiceAleatorio];
   cantidadPreguntas.splice(indiceAleatorio, 1);
@@ -34,7 +33,9 @@ function cargarPregunta() {
   document.getElementById("opcion-2").innerHTML = opciones[1];
   document.getElementById("opcion-3").innerHTML = opciones[2];
 
-  document.getElementById("totalPreguntas").innerHTML = `Pregunta número: ${contador+1}/${baseDePreguntas.length}`;
+  document.getElementById("totalPreguntas").innerHTML = `Pregunta número: ${
+    contador + 1
+  }/${baseDePreguntas.length}`;
   contador++;
 }
 
@@ -57,7 +58,7 @@ async function seleccionarOpción(index) {
 
   if (cantidadPreguntas.length == 0) {
     await Swal.fire({
-      title: "Juego términado",
+      title: "Juego terminado",
       text: `Tu puntaje fue de: ${puntaje}/${baseDePreguntas.length}`,
     });
     for (var i = 0; i < baseDePreguntas.length; i++) {
